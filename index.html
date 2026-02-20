@@ -111,84 +111,18 @@
         }
 
         .royal-emblem {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             margin: 0 auto 15px;
             position: relative;
-            animation: rotateEmblem 20s linear infinite;
         }
 
-        @keyframes rotateEmblem {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .emblem-sun {
-            position: absolute;
+        .emblem-image {
             width: 100%;
             height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.6));
             border-radius: 50%;
-            background: radial-gradient(circle, var(--primary-gold) 30%, var(--secondary-gold) 70%);
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
-        }
-
-        .emblem-sun::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 40%;
-            height: 40%;
-            background: var(--dark-brown);
-            border-radius: 50%;
-        }
-
-        .emblem-rays {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            animation: rotateRays 10s linear infinite reverse;
-        }
-
-        @keyframes rotateRays {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .ray {
-            position: absolute;
-            width: 2px;
-            height: 25px;
-            background: linear-gradient(to bottom, var(--primary-gold), transparent);
-            left: 50%;
-            top: 0;
-            transform-origin: 50% 40px;
-        }
-
-        .ray:nth-child(1) { transform: rotate(0deg) translateX(-50%); }
-        .ray:nth-child(2) { transform: rotate(45deg) translateX(-50%); }
-        .ray:nth-child(3) { transform: rotate(90deg) translateX(-50%); }
-        .ray:nth-child(4) { transform: rotate(135deg) translateX(-50%); }
-        .ray:nth-child(5) { transform: rotate(180deg) translateX(-50%); }
-        .ray:nth-child(6) { transform: rotate(225deg) translateX(-50%); }
-        .ray:nth-child(7) { transform: rotate(270deg) translateX(-50%); }
-        .ray:nth-child(8) { transform: rotate(315deg) translateX(-50%); }
-
-        .lion-symbol {
-            font-size: 50px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.8));
-            z-index: 2;
-            animation: pulse 3s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.1); }
         }
 
         h1 {
@@ -200,17 +134,17 @@
             letter-spacing: 2px;
         }
 
-        .year-display {
-            font-size: 22px;
-            color: var(--light-cream);
-            font-weight: 400;
+        .imperial-year {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-gold);
             margin-bottom: 5px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
 
-        .subtitle {
-            font-size: 14px;
+        .solar-year {
+            font-size: 15px;
             color: var(--light-brown);
-            font-style: italic;
         }
 
         .month-selector {
@@ -459,7 +393,7 @@
 
         @media (max-width: 480px) {
             h1 { font-size: 26px; }
-            .year-display { font-size: 18px; }
+            .imperial-year { font-size: 20px; }
             .month-selector { grid-template-columns: repeat(2, 1fr); }
             .month-btn { font-size: 14px; padding: 12px 8px; }
             .calendar-grid { gap: 4px; }
@@ -482,22 +416,16 @@
     <div class="container">
         <div class="header">
             <div class="royal-emblem">
-                <div class="emblem-sun"></div>
-                <div class="emblem-rays">
-                    <div class="ray"></div>
-                    <div class="ray"></div>
-                    <div class="ray"></div>
-                    <div class="ray"></div>
-                    <div class="ray"></div>
-                    <div class="ray"></div>
-                    <div class="ray"></div>
-                    <div class="ray"></div>
-                </div>
-                <div class="lion-symbol">🦁</div>
+                <img 
+                    class="emblem-image" 
+                    src="https://iranpoliticsclub.net/flags/qajar/images/Imperial-iran-qajar-navy-ensign-1907-1925-emblem.jpg" 
+                    alt="نشان شاهنشاهی ایران"
+                    onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-size:70px;line-height:100px;\'>🦁</span>'"
+                >
             </div>
             <h1>تقویم شاهنشاهی ایران</h1>
-            <div class="year-display">سال ۱۴۰۴ هجری شمسی</div>
-            <div class="subtitle">گاهشماری شاهنشاهی از ۲۵۳۵ سال پیش</div>
+            <div class="imperial-year">سال ۲۵۸۳ شاهنشاهی</div>
+            <div class="solar-year">۱۴۰۴ هجری شمسی</div>
         </div>
 
         <div class="month-selector">
@@ -549,7 +477,6 @@
 
         installBtn.addEventListener('click', async () => {
             if (!deferredPrompt) {
-                // فالبک برای iOS
                 alert('برای نصب:\n۱. روی دکمه Share (↗️) کلیک کنید\n۲. گزینه "Add to Home Screen" را انتخاب کنید');
                 return;
             }
