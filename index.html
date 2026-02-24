@@ -16,7 +16,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦁</text></svg>">
     <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='192' height='192'><rect width='192' height='192' fill='%233E2723'/><text x='50%' y='50%' font-size='90' text-anchor='middle' dy='.3em' fill='%23D4AF37'>🦁🌞</text></svg>">
     
-    <title>تقویم شاهنشاهی ایران | ۱۴۰۴</title>
+    <title>تقویم شاهنشاهی ایران | ۱۴۰۵</title>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -191,18 +191,76 @@
             background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
             border-radius: 12px;
             border: 2px solid var(--primary-gold);
+            transition: all 0.4s ease;
+        }
+
+        .month-symbol-wrapper {
+            margin: 0 auto 15px;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .month-symbol-img {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            border-radius: 12px;
+            filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.4));
+            transition: transform 0.3s ease;
+        }
+
+        .month-symbol-img:hover {
+            transform: scale(1.05);
+        }
+
+        .month-symbol-placeholder {
+            width: 120px;
+            height: 120px;
+            border: 2px dashed var(--month-color, var(--primary-gold));
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: var(--light-brown);
+            background: rgba(255,255,255,0.03);
+        }
+
+        .placeholder-label {
+            font-size: 11px;
+            color: var(--light-brown);
+            margin-top: 6px;
+            line-height: 1.4;
+            text-align: center;
+            font-family: 'Scheherazade New', serif;
+        }
+
+        .month-color-badge {
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            margin: 10px auto 10px;
+            font-family: 'Scheherazade New', serif;
         }
 
         .month-name {
             font-size: 28px;
             font-weight: 700;
-            color: var(--primary-gold);
-            margin-bottom: 10px;
+            color: var(--month-color, var(--primary-gold));
+            margin-bottom: 8px;
+            transition: color 0.4s ease;
         }
 
         .month-info {
-            font-size: 16px;
+            font-size: 15px;
             color: var(--light-brown);
+            line-height: 1.7;
+            margin-top: 8px;
         }
 
         .calendar-grid {
@@ -418,14 +476,14 @@
             <div class="royal-emblem">
                 <img 
                     class="emblem-image" 
-                    src="https://raw.githubusercontent.com/tganga369/tganga369.github.io/refs/heads/main/iran-flag.jpg" 
+                    src="https://raw.githubusercontent.com/tganga369/tganga369.github.io/refs/heads/main/images/iran-flag.jpg" 
                     alt="نشان شاهنشاهی ایران"
                     onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-size:70px;line-height:100px;\'>🦁</span>'"
                 >
             </div>
             <h1>تقویم شاهنشاهی ایران</h1>
-            <div class="imperial-year">سال ۲۵۸۳ شاهنشاهی</div>
-            <div class="solar-year">۱۴۰۴ هجری شمسی</div>
+            <div class="imperial-year">سال ۲۵۸۵ شاهنشاهی</div>
+            <div class="solar-year">۱۴۰۵ هجری شمسی</div>
         </div>
 
         <div class="month-selector">
@@ -492,7 +550,11 @@
             {
                 name: 'فروردین',
                 days: 31,
-                info: 'نخستین ماه بهار و آغاز سال نو',
+                color: '#4CAF50',
+                colorName: 'سبز روشن',
+                symbol: 'https://raw.githubusercontent.com/tganga369/tganga369.github.io/refs/heads/main/images/farvardin.jpg',
+                symbolDesc: 'فروهر، پرنده و جوانه',
+                info: 'یادگار رستاخیز سیاوش است و احترام به طبیعت و نیروهای خیر',
                 events: [
                     { day: 1, name: 'نوروز باستانی', desc: 'جشن آغاز سال نو و تجدید حیات طبیعت', holiday: true },
                     { day: 2, name: 'دومین روز نوروز', desc: 'ادامه جشن‌های نوروزی', holiday: true },
@@ -501,30 +563,41 @@
                     { day: 6, name: 'روز خرد', desc: 'خردروز از فروردین‌ماه - جشن خرد و دانش', holiday: false },
                     { day: 10, name: 'جشن آبان‌گان', desc: 'بزرگداشت آب و طبیعت', holiday: false },
                     { day: 13, name: 'سیزده‌به‌در', desc: 'روز طبیعت و پایان نوروز', holiday: true },
-                    { day: 19, name: 'فروردین روز', desc: 'جشن فروهر (روان نیاکان)', holiday: false },
+                    { day: 19, name: 'فروردینگان', desc: 'جشن فروهر (روان نیاکان)، گرامیداشت فروردین ایزد', holiday: true },
                     { day: 25, name: 'گاهنبار میدیوزَرِم', desc: 'جشن میانه بهار', holiday: false }
                 ]
             },
             {
                 name: 'اردیبهشت',
                 days: 31,
-                info: 'دومین ماه بهار و زمان رشد گیاهان',
+                color: '#FFFFFF',
+                colorName: 'سفید',
+                symbol: 'https://raw.githubusercontent.com/tganga369/tganga369.github.io/refs/heads/main/images/ordibehesht.jpg',
+                symbolDesc: 'چشمه و آب پاک',
+                info: 'نماد تقدس آتش، پاکیزگی و جشن گل‌هاست که ریشه‌ای عمیق در فرهنگ شاهنشاهی ایرانیان دارد',
                 events: [
+                    { day: 1, name: 'روز بزرگداشت سعدی', desc: 'گرامیداشت شاعر و ادیب بزرگ ایران زمین، سعدی شیرازی', holiday: false },
                     { day: 3, name: 'اردیبهشت روز', desc: 'جشن آتش و پاکی', holiday: false },
-                    { day: 4, name: 'روز شهریور', desc: 'بزرگداشت فلزات و معادن', holiday: false },
+                    { day: 4, name: 'اردیبهشتگان - روز پاکیزگی', desc: 'جشن اردیبهشت، نگهبان آتش و پاکیزگی', holiday: true },
                     { day: 6, name: 'خرداد روز', desc: 'جشن کمال و خرد', holiday: false },
-                    { day: 10, name: 'جشن گیاهان', desc: 'بزرگداشت سبزه و گیاهان', holiday: false },
+                    { day: 10, name: 'روز ملی خلیج فارس', desc: 'پاسداشت خلیج همیشه فارس و هویت ایرانی', holiday: false },
                     { day: 15, name: 'گاهنبار میدیوشَهِم', desc: 'جشن پایان بهار', holiday: false },
-                    { day: 23, name: 'روز تیر', desc: 'بزرگداشت باران و ابرها', holiday: false }
+                    { day: 23, name: 'روز تیر', desc: 'بزرگداشت باران و ابرها', holiday: false },
+                    { day: 25, name: 'روز بزرگداشت فردوسی', desc: 'گرامیداشت حکیم ابوالقاسم فردوسی، سرایندهٔ شاهنامه و پاسدار زبان پارسی', holiday: false },
+                    { day: 28, name: 'روز بزرگداشت حکیم عمر خیام و روز جهانی موزه', desc: 'گرامیداشت خیام نیشابوری، ریاضیدان، ستاره‌شناس و شاعر بزرگ ایرانی', holiday: false }
                 ]
             },
             {
                 name: 'خرداد',
                 days: 31,
-                info: 'سومین ماه بهار و زمان برداشت',
+                color: '#2196F3',
+                colorName: 'آبی',
+                symbol: 'https://raw.githubusercontent.com/tganga369/tganga369.github.io/refs/heads/main/images/khordad.jpg',
+                symbolDesc: 'برگ سبز و آبراه',
+                info: 'ماه پاسداشت آب‌های روان، سرسبزی، و ساخت کاریزها',
                 events: [
                     { day: 1, name: 'روز بهرام', desc: 'جشن پیروزی و قهرمانی', holiday: false },
-                    { day: 6, name: 'خرداد روز', desc: 'روز کمال و خرد', holiday: false },
+                    { day: 6, name: 'جشن خردادگان - پاسداشت آب', desc: 'جشن بزرگ خرداد، ایزد نگهبان آب‌های روان و پاکی', holiday: true },
                     { day: 14, name: 'درگذشت کوروش بزرگ', desc: 'یادبود بنیانگذار امپراتوری هخامنشی', holiday: false },
                     { day: 25, name: 'گاهنبار پَیتیَشْهَهیا', desc: 'جشن برداشت غلات', holiday: false }
                 ]
@@ -532,10 +605,14 @@
             {
                 name: 'تیر',
                 days: 31,
-                info: 'نخستین ماه تابستان',
+                color: '#00BCD4',
+                colorName: 'فیروزه‌ای',
+                symbol: 'https://raw.githubusercontent.com/tganga369/tganga369.github.io/refs/heads/main/images/tir.jpg',
+                symbolDesc: 'آرش کمانگیر',
+                info: 'ماه پیوند ایرانیان با طبیعت',
                 events: [
                     { day: 1, name: 'جشن آب‌ریزان', desc: 'جشن ریختن آب بر یکدیگر در گرمای تابستان', holiday: false },
-                    { day: 13, name: 'تیرگان', desc: 'جشن تیرگان - بزرگداشت باران', holiday: false },
+                    { day: 13, name: 'جشن تیرگان', desc: 'بزرگداشت آرش کمانگیر و ایران‌پرستی', holiday: true },
                     { day: 18, name: 'روز مهر', desc: 'بزرگداشت عهد و پیمان', holiday: false },
                     { day: 21, name: 'روز گوش', desc: 'جشن گوسفند و دام', holiday: false }
                 ]
@@ -543,33 +620,52 @@
             {
                 name: 'مرداد',
                 days: 31,
-                info: 'دومین ماه تابستان',
+                color: '#FFC107',
+                colorName: 'طلایی',
+                symbol: 'https://raw.githubusercontent.com/tganga369/tganga369.github.io/refs/heads/main/images/mordad.jpg',
+                symbolDesc: 'شیر و خورشید',
+                info: 'ماه بی‌مرگی',
                 events: [
-                    { day: 7, name: 'مرداد روز', desc: 'جشن جاودانگی و امرداد (فرشته گیاهان)', holiday: false },
-                    { day: 9, name: 'روز دی به آذر', desc: 'جشن آفرینش', holiday: false },
+                    { day: 4, name: 'سالگرد درگذشت رضاشاه بزرگ', desc: 'یادبود بنیانگذار ایران نوین، رضاشاه کبیر', holiday: false },
+                    { day: 5, name: 'سالگرد درگذشت شاهنشاه آریامهر', desc: 'یادبود محمدرضا شاه پهلوی، شاهنشاه آریامهر', holiday: false },
+                    { day: 7, name: 'امردادگان - روز جاودانگی', desc: 'جشن امرداد، ایزد جاودانگی و بی‌مرگی و نگهبان گیاهان', holiday: true },
+                    { day: 10, name: 'چله تابستان', desc: 'میانه گرمای تابستان، روز چله', holiday: false },
+                    { day: 14, name: 'سالگرد صدور فرمان مشروطه', desc: 'یادبود فرمان مشروطیت و آغاز حکومت قانون در ایران', holiday: false },
                     { day: 15, name: 'گاهنبار آیاثْرِمـَا', desc: 'جشن برداشت انگور', holiday: false },
-                    { day: 17, name: 'روز فروردین', desc: 'یاد فروهر نیاکان', holiday: false }
+                    { day: 28, name: 'یادبود جنایت سینما رکس آبادان', desc: 'یاد قربانیان جنایت سینما رکس آبادان که توسط اخوندها به آتش کشیده شد', holiday: false }
                 ]
             },
             {
                 name: 'شهریور',
                 days: 31,
-                info: 'سومین ماه تابستان و پایان آن',
+                color: '#9C27B0',
+                colorName: 'بنفش',
+                symbol: 'https://raw.githubusercontent.com/tganga369/tganga369.github.io/refs/heads/main/images/shahrivar.jpg',
+                symbolDesc: 'تاج و کوه',
+                info: 'ماه برنامه‌ریزی برای پاییزی شکوفا',
                 events: [
-                    { day: 4, name: 'شهریور روز', desc: 'جشن شهریور (فرشته فلزات)', holiday: false },
-                    { day: 8, name: 'روز خور', desc: 'بزرگداشت خورشید', holiday: false },
+                    { day: 1, name: 'بزرگداشت ابوعلی سینا - جشن آتش', desc: 'گرامیداشت شیخ‌الرئیس ابوعلی سینا، پزشک و فیلسوف بزرگ ایرانی', holiday: false },
+                    { day: 4, name: 'شهریورگان - روز دادگری و آرمان‌شهر', desc: 'جشن شهریور، ایزد دادگری و آرمان‌شهر؛ نگهبان فلزات و عدالت', holiday: true },
+                    { day: 5, name: 'بزرگداشت زکریای رازی - جشن آتش', desc: 'گرامیداشت محمد زکریای رازی، پزشک و شیمیدان بزرگ ایرانی', holiday: false },
+                    { day: 13, name: 'روز بزرگداشت ابوریحان بیرونی', desc: 'گرامیداشت ابوریحان بیرونی، دانشمند، ریاضیدان و مورخ بزرگ ایرانی', holiday: false },
                     { day: 14, name: 'روز میلاد زرتشت', desc: 'زادروز پیامبر زرتشت', holiday: false },
-                    { day: 21, name: 'گاهنبار مَیذیارِم', desc: 'جشن پایان تابستان', holiday: false }
+                    { day: 21, name: 'گاهنبار مَیذیارِم', desc: 'جشن پایان تابستان', holiday: false },
+                    { day: 27, name: 'بزرگداشت شهریار - روز شعر و ادب پارسی', desc: 'گرامیداشت استاد محمدحسین شهریار، شاعر بزرگ ایرانی', holiday: false }
                 ]
             },
             {
                 name: 'مهر',
                 days: 30,
-                info: 'نخستین ماه پاییز',
+                color: '#FF9800',
+                colorName: 'نارنجی',
+                symbol: 'https://raw.githubusercontent.com/tganga369/tganga369.github.io/refs/heads/main/images/mehr.jpg',
+                symbolDesc: 'خورشید و درفش کاویانی',
+                info: 'ماه ستایش پیمان، دوستی و روشنایی',
                 events: [
                     { day: 2, name: 'جشن قالیشویان', desc: 'جشن شستن قالی‌ها', holiday: false },
-                    { day: 8, name: 'روز آسمان', desc: 'بزرگداشی آسمان', holiday: false },
-                    { day: 16, name: 'مهرگان', desc: 'جشن مهر و دوستی', holiday: true },
+                    { day: 8, name: 'روز آسمان', desc: 'بزرگداشت آسمان', holiday: false },
+                    { day: 10, name: 'آغاز جشن‌های مهرگان', desc: 'آغاز هفته جشن‌های مهرگان (۱۰ تا ۱۶ مهر)', holiday: false },
+                    { day: 16, name: 'مهرگان - جشن مهرورزی', desc: 'جشن بزرگ مهر و دوستی؛ روز مهر از ماه مهر، همچون نوروز، روزی که نام روز و ماه یکی می‌شود', holiday: true },
                     { day: 21, name: 'رام روز', desc: 'جشن آرامش و صلح', holiday: false },
                     { day: 26, name: 'آبان روز', desc: 'جشن آب', holiday: false }
                 ]
@@ -577,11 +673,16 @@
             {
                 name: 'آبان',
                 days: 30,
-                info: 'دومین ماه پاییز',
+                color: '#1565C0',
+                colorName: 'آبی تیره',
+                symbol: 'https://raw.githubusercontent.com/tganga369/tganga369.github.io/refs/heads/main/images/aban.jpg',
+                symbolDesc: 'مقبره کوروش و استوانه حقوق بشر',
+                info: 'ماه شاهان؛ ترکیبی از احترام به طبیعت (آب) و افتخار به تاریخ ملی (کوروش بزرگ) است که در آن، پاکیزگی عناصر طبیعی در کنار بزرگی پادشاهان عادل گرامی داشته می‌شود',
                 events: [
                     { day: 1, name: 'جشن میترکانا', desc: 'جشن کهن مهر و میترا', holiday: false },
-                    { day: 10, name: 'آبان‌گان', desc: 'جشن بزرگ آب و آبان', holiday: false },
-                    { day: 15, name: 'گاهنبار مَیذیوزَرِمیا', desc: 'جشن میانه پاییز', holiday: false },
+                    { day: 7, name: 'بزرگداشت کوروش بزرگ و فتح بابل', desc: 'یادبود کوروش بزرگ، بنیانگذار امپراتوری هخامنشی و فاتح بابل، پادشاهی که منشور حقوق بشر را صادر کرد', holiday: false },
+                    { day: 10, name: 'آبانگان - روز پاکی و روشنایی', desc: 'جشن بزرگ آبان، ایزدبانوی آب و پاکی', holiday: false },
+                    { day: 15, name: 'جشن میانه پاییز', desc: 'یکی از جشن‌های دوازده‌گانه گاهنباری - جشن میانه پاییز', holiday: false },
                     { day: 19, name: 'فروردین روز', desc: 'یاد فروهر', holiday: false },
                     { day: 24, name: 'روز دین', desc: 'جشن دین و مذهب', holiday: false }
                 ]
@@ -589,35 +690,54 @@
             {
                 name: 'آذر',
                 days: 30,
-                info: 'سومین ماه پاییز',
+                color: '#F44336',
+                colorName: 'قرمز',
+                symbol: 'https://raw.githubusercontent.com/tganga369/tganga369.github.io/refs/heads/main/images/azar.jpg',
+                symbolDesc: 'شعله و آتش',
+                info: 'ماه ستایش آتش و روشنایی',
                 events: [
                     { day: 1, name: 'آذر روز', desc: 'جشن آذر (آتش)', holiday: false },
-                    { day: 9, name: 'آذرگان', desc: 'جشن بزرگ آتش', holiday: false },
+                    { day: 9, name: 'آذریان - بزرگداشت آتش پاک', desc: 'جشن بزرگ آذر، ایزد نگهبان آتش پاک', holiday: true },
                     { day: 14, name: 'روز مهر', desc: 'جشن عهد و پیمان', holiday: false },
                     { day: 21, name: 'گاهنبار مَیذْیارِیا', desc: 'جشن پایان پاییز', holiday: false },
-                    { day: 26, name: 'روز ماه', desc: 'بزرگداشت ماه', holiday: false }
+                    { day: 26, name: 'روز ماه', desc: 'بزرگداشت ماه', holiday: false },
+                    { day: 30, name: 'شب یلدا - آغاز زمستان', desc: 'بلندترین شب سال، جشن یلدا و شب چله', holiday: true }
                 ]
             },
             {
                 name: 'دی',
                 days: 30,
-                info: 'نخستین ماه زمستان',
+                color: '#CFD8DC',
+                colorName: 'نقره‌ای',
+                symbol: 'https://raw.githubusercontent.com/tganga369/tganga369.github.io/refs/heads/main/images/dey.jpg',
+                symbolDesc: 'ستاره صبح',
+                info: 'ماه استراحت و گرامی‌داشت افزایش نور خورشید',
                 events: [
-                    { day: 1, name: 'جشن دیگان', desc: 'جشن آفریدگار (اهورامزدا)', holiday: false },
-                    { day: 5, name: 'روز میلاد میترا', desc: 'زادروز میترا (ایزد مهر)', holiday: false },
-                    { day: 8, name: 'دی به آذر', desc: 'جشن آتش در زمستان', holiday: false },
-                    { day: 15, name: 'جشن خرم روز', desc: 'جشن شادی در سرمای زمستان', holiday: false },
-                    { day: 23, name: 'روز بهمن', desc: 'جشن بهمن (فرشته حیوانات)', holiday: false }
+                    { day: 1, name: 'دیگان - روز برابری و همدلی', desc: 'جشن آفریدگار (اهورامزدا)؛ روز برابری و همدلی میان مردمان', holiday: true },
+                    { day: 3, name: 'روز اقدامات شاهنشاه', desc: 'گرامیداشت اقدامات و اصلاحات شاهنشاه', holiday: false },
+                    { day: 4, name: 'جشن کریسمس (ارامنه)', desc: 'گرامیداشت کریسمس برای هم‌وطنان ارمنی؛ نشانه تعامل و همزیستی فرهنگی', holiday: false },
+                    { day: 5, name: 'روز درگذشت زرتشت', desc: 'یادبود پیامبر زرتشت', holiday: false },
+                    { day: 8, name: 'دیگان - ادامه جشن', desc: 'دی به آذر - ادامه جشن‌های دیگان', holiday: false },
+                    { day: 11, name: 'آغاز سال نو میلادی', desc: 'گرامیداشت سال نو میلادی و تعامل با تقویم جهانی', holiday: false },
+                    { day: 14, name: 'جشن سیر', desc: 'جشن سیر، یکی از جشن‌های کهن زمستانی', holiday: false },
+                    { day: 15, name: 'دیگان - ادامه جشن', desc: 'دی به مهر - ادامه جشن‌های دیگان', holiday: false },
+                    { day: 16, name: 'بزرگداشت فریدون', desc: 'یادبود فریدون، پادشاه اسطوره‌ای و نماد دادگری در شاهنامه', holiday: false },
+                    { day: 17, name: 'یادبود درگذشت بابک خرمدین', desc: 'یادبود بابک خرمدین، قهرمان مقاومت ایرانی در برابر بیگانگان', holiday: false },
+                    { day: 23, name: 'دیگان - ادامه جشن', desc: 'دی به دین - ادامه جشن‌های دیگان', holiday: false }
                 ]
             },
             {
                 name: 'بهمن',
                 days: 30,
-                info: 'دومین ماه زمستان',
+                color: '#388E3C',
+                colorName: 'سبز تیره',
+                symbol: 'https://raw.githubusercontent.com/tganga369/tganga369.github.io/refs/heads/main/images/bahman.jpg',
+                symbolDesc: 'گاو و سبزه',
+                info: 'ماه اندیشه‌ورزی و گرمایش',
                 events: [
-                    { day: 2, name: 'بهمن روز', desc: 'جشن بهمن', holiday: false },
-                    { day: 5, name: 'جشن سده', desc: 'جشن آتش در سرمای زمستان - یکصد روز و یکصد شب مانده به نوروز', holiday: false },
-                    { day: 10, name: 'جشن اسفندگان', desc: 'آغاز آماده‌سازی برای بهار', holiday: false },
+                    { day: 2, name: 'بهمنگان - گرامیداشت حیوانات', desc: 'جشن بهمن، ایزد نگهبان حیوانات و مردمان', holiday: true },
+                    { day: 5, name: 'جشن نوسده', desc: 'صد روز مانده به نوروز، جشن نوسده', holiday: false },
+                    { day: 10, name: 'جشن سده', desc: 'جشن بزرگ سده، یکصد روز و یکصد شب مانده به نوروز، جشن آتش در سرمای زمستان', holiday: true },
                     { day: 17, name: 'روز اشتاد', desc: 'بزرگداشت راستی', holiday: false },
                     { day: 22, name: 'روز انیران', desc: 'یاد ایرانیان', holiday: false }
                 ]
@@ -625,15 +745,21 @@
             {
                 name: 'اسفند',
                 days: 29,
-                info: 'سومین ماه زمستان و پایان سال',
+                color: '#E91E63',
+                colorName: 'صورتی',
+                symbol: 'https://raw.githubusercontent.com/tganga369/tganga369.github.io/refs/heads/main/images/esfand.jpg',
+                symbolDesc: 'زمین و درختان',
+                info: 'ماه ایزدبانوی نگهبان زمین و ماه بدرود با سرما و تاریکی',
                 events: [
                     { day: 1, name: 'جشن اسفندگان', desc: 'جشن اسفند (ایزد بانوی زمین)', holiday: false },
-                    { day: 5, name: 'اسفند روز', desc: 'روز ویژه اسفند', holiday: false },
+                    { day: 5, name: 'سپندارمذگان - روز عشق و وفاداری - روز زن', desc: 'جشن سپندارمذ، ایزدبانوی زمین؛ ولنتاین ایرانی، روز عشق، وفاداری و بزرگداشت زنان', holiday: true },
                     { day: 10, name: 'گاهنبار هَمَسْپَتمَدیا', desc: 'جشن پایان سال - پنج روز اندرگاه', holiday: false },
                     { day: 15, name: 'آغاز فروردگان', desc: 'ده روز یاد فروهر نیاکان', holiday: false },
+                    { day: 18, name: 'روز جهانی زن', desc: 'گرامیداشت روز جهانی زن (۸ مارس)', holiday: false },
                     { day: 19, name: 'جشن فروردگان', desc: 'بزرگداشت روان درگذشتگان', holiday: false },
+                    { day: 24, name: 'روز مرد - زادروز رضاشاه بزرگ', desc: 'گرامیداشت رضاشاه کبیر، بنیانگذار ایران نوین؛ روز مرد و پدر', holiday: false },
                     { day: 25, name: 'جشن نوروز پیشینیان', desc: 'نوروز باستانی پیش از اصلاحات', holiday: false },
-                    { day: 26, name: 'شب چله', desc: 'آخرین شب سال', holiday: false }
+                    { day: 29, name: 'روز آفرینش مردمان', desc: 'آخرین روز سال، روز بدرود با سال کهنه و آماده‌باش برای تولد دوباره', holiday: true }
                 ]
             }
         ];
@@ -668,10 +794,26 @@
         function renderCalendar() {
             const month = monthsData[currentMonth];
             const calendarView = document.getElementById('calendarView');
-            
+
+            // Apply month color theme dynamically
+            document.documentElement.style.setProperty('--month-color', month.color);
+
+            // Symbol placeholder or real image
+            const symbolSrc = month.symbol;
+            const isPlaceholder = symbolSrc.includes('_SYMBOL_URL');
+            const symbolHtml = isPlaceholder
+                ? `<div class="month-symbol-placeholder">🔲<div class="placeholder-label">عکس نماد ماه<br><small>${month.symbolDesc}</small></div></div>`
+                : `<img class="month-symbol-img" src="${symbolSrc}" alt="${month.symbolDesc}" title="${month.symbolDesc}">`;
+
             let html = `
-                <div class="month-header">
-                    <div class="month-name">${month.name}</div>
+                <div class="month-header" style="border-color: ${month.color}; background: linear-gradient(135deg, ${month.color}18 0%, ${month.color}08 100%);">
+                    <div class="month-symbol-wrapper">
+                        ${symbolHtml}
+                    </div>
+                    <div class="month-name" style="color: ${month.color};">${month.name}</div>
+                    <div class="month-color-badge" style="background: ${month.color}22; border: 1px solid ${month.color}; color: ${month.color};">
+                        ● ${month.colorName} — ${month.symbolDesc}
+                    </div>
                     <div class="month-info">${month.info}</div>
                 </div>
                 
